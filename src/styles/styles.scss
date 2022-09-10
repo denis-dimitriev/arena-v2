@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+// screens resolution variables
+
+$extra-small: 320px;
+$phone: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktops: 1200px;
+$extra-large-desktops: 1400px;
+
+$min-width-container: $extra-small;
+$max-width-container: 1300px;
+
+
+@function toRem($value) {
+  $remValue: ($value / 16) + rem;
+  @return $remValue;
+}
+
+@function toEm($value) {
+  $remValue: ($value / 16) + em;
+  @return $remValue;
+}
+
+
+[class*="__container"] {
+  margin: 0 auto;
+  max-width: $max-width-container;
+  min-width: $min-width-container;
+  min-height: 100%;
+  padding: 0 toRem(10);
+}
