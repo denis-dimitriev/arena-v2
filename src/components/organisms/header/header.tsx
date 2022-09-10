@@ -1,12 +1,12 @@
 import './header.scss';
 
-import { useScrollHideElement } from '../../hooks/useScrollHideElement';
+import { useScrollTranslateElement } from '../../hooks/useScrollTranslateElement';
 
 export const Header = () => {
-  const { hidden } = useScrollHideElement();
+  const { translate } = useScrollTranslateElement();
 
   return (
-    <header className={`header ${hidden && 'header_hidden'}`}>
+    <header className={`header ${translate && 'header_hidden'}`}>
       <div className="header__container">
         <h1>Header</h1>
       </div>

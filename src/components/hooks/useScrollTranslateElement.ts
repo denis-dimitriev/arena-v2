@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-export const useScrollHideElement = () => {
-  const [hidden, setHidden] = useState<boolean>(false);
+export const useScrollTranslateElement = () => {
+  const [translate, setTranslate] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = (event: WheelEvent) => {
-      event.deltaY > 0 ? setHidden(true) : setHidden(false);
+      event.deltaY > 0 ? setTranslate(true) : setTranslate(false);
     };
 
     window.addEventListener('wheel', (e) => handleScroll(e));
@@ -15,5 +15,5 @@ export const useScrollHideElement = () => {
     };
   }, []);
 
-  return { hidden };
+  return { translate };
 };

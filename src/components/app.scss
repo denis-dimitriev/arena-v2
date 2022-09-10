@@ -1,0 +1,9 @@
+@import "src/styles/styles";
+
+.main {
+  transition: transform 0.5s cubic-bezier(0.8, 0.2, 0.2, 0.8);
+
+  &_up {
+    transform: translateY(toRem(-72));
+  }
+}
