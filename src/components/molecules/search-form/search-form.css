@@ -1,0 +1,9 @@
+.search-form {
+  position: relative;
+}
+.search-form__btn {
+  position: absolute;
+  right: 0;
+}
+
+/*# sourceMappingURL=search-form.css.map */

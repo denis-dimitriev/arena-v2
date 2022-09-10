@@ -1,7 +1,7 @@
 import './layout.scss';
-import { ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 
-interface ILayout {
+interface ILayout extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
 }
 

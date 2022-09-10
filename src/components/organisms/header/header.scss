@@ -13,4 +13,8 @@
   &_hidden {
     transform: translateY(-100%);
   }
+
+  &__container {
+    color: $white;
+  }
 }
