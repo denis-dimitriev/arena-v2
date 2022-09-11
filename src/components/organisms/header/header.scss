@@ -17,4 +17,15 @@
   &__container {
     color: $white;
   }
+
+  &__user-box {
+    column-gap: 10%;
+  }
+
+  &__link {
+    svg {
+      transform: scale(1.2);
+      fill: $white;
+    }
+  }
 }

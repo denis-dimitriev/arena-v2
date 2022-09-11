@@ -6,10 +6,10 @@ export const SearchForm = () => {
   return (
     <form className="search-form w-100 d-flex">
       <input
-        className="form-control"
+        className="form-control form-control-dark text-bg-dark"
         list="datalistOptions"
         id="exampleDataList"
-        placeholder="Type to search..."
+        placeholder="Поиск..."
       />
       <button className="search-form__btn btn btn-light" type="submit" id="button-addon2">
         <SearchIcon />

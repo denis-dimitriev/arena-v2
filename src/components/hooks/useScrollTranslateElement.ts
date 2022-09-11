@@ -4,15 +4,16 @@ export const useScrollTranslateElement = () => {
   const [translate, setTranslate] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleScroll = (event: WheelEvent) => {
-      event.deltaY > 0 ? setTranslate(true) : setTranslate(false);
-    };
+      const handleScroll = (event: WheelEvent) => {
+        event.deltaY > 0 ? setTranslate(true) : setTranslate(false);
+      };
 
-    window.addEventListener('wheel', (e) => handleScroll(e));
+      const layout = document.getElementById('layout')
+      layout?.addEventListener('wheel', (e) => handleScroll(e));
 
-    return () => {
-      window.removeEventListener('wheel', handleScroll);
-    };
+      return () => {
+        layout?.removeEventListener('wheel', handleScroll);
+      };
   }, []);
 
   return { translate };
