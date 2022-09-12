@@ -5,4 +5,10 @@
   height: 100vh;
   background-color: $gray-100;
   overflow: hidden;
+
+  &__form {
+    min-width: $extra-small;
+    background-color: $white;
+    border-radius: 10px;
+  }
 }
