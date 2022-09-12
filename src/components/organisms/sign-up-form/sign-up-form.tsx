@@ -1,37 +1,97 @@
 import { Logo } from '../../ui/atoms/logo/logo';
 import { GoogleIcon } from '../../../assets';
+import { ChangeEvent, FormEvent, useReducer } from 'react';
+import {
+  SignUpReducer,
+  initialSignUpFields,
+  SignUpActionsTypes
+} from '../../../reducers/sign-up.reducer';
+import { useAlert } from '../../../hooks/useAlert';
+
+import cn from 'classnames';
+import {
+  createNewUserWithEmailAndPassword,
+  signInWithGoogleRedirect
+} from '../../../firebase/firebase.auth';
 
 const SignUpForm = () => {
+  const [state, dispatch] = useReducer(SignUpReducer, initialSignUpFields);
+  const {
+    alert: { error, success },
+    setAlert
+  } = useAlert();
+
+  const onInputEmailHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: SignUpActionsTypes.ADD_EMAIL,
+      payload: event.target.value
+    });
+    setAlert({ success: true, error });
+  };
+
+  const onInputPasswordHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: SignUpActionsTypes.ADD_PASSWORD,
+      payload: event.target.value
+    });
+  };
+
+  const onInputConfirmPasswordHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: SignUpActionsTypes.ADD_CONFIRM_PASSWORD,
+      payload: event.target.value
+    });
+  };
+
+  const onSignUpSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const { email, password, confirmPassword } = state;
+
+    if (password !== confirmPassword) {
+      setAlert({ error: true, success: false });
+      alert('Пароли не совпадают');
+      return;
+    }
+    setAlert({ success: true, error: false });
+    const user = await createNewUserWithEmailAndPassword(email, password);
+  };
+
   return (
     <div className="auth__form">
-      <form className="w-100 d-flex align-items-center flex-column gap-md-2">
+      <form
+        className="w-100 d-flex align-items-center flex-column gap-md-2"
+        onSubmit={onSignUpSubmit}>
         <Logo />
         <h1 className="h3 mb-3">Регистрация</h1>
 
-        <div className="form-floating w-100">
+        <div className={cn('form-floating w-100', { 'was-validated': success })}>
           <input
             type="email"
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
+            onChange={onInputEmailHandler}
           />
           <label htmlFor="floatingInput">Эл. почта</label>
         </div>
         <div className="form-floating w-100">
           <input
             type="password"
-            className="form-control"
+            className={cn('form-control', { 'border-danger': error })}
             id="floatingPassword"
             placeholder="Password"
+            onChange={onInputPasswordHandler}
           />
           <label htmlFor="floatingPassword">Пароль</label>
         </div>
         <div className="form-floating w-100">
           <input
             type="password"
-            className="form-control"
+            className={cn('form-control', { 'border-danger': error })}
             id="floatingConfirmPassword"
             placeholder="Confirm Password"
+            onChange={onInputConfirmPasswordHandler}
           />
           <label htmlFor="floatingConfirmPassword">Подтвердите пароль</label>
         </div>
@@ -42,9 +102,10 @@ const SignUpForm = () => {
         <p className="m-1">Или</p>
         <button
           className="w-100 btn btn-lg btn-outline-secondary d-flex gap-sm-2 align-items-center justify-content-center"
-          type="submit">
+          type="button"
+          onClick={signInWithGoogleRedirect}>
           <GoogleIcon />
-          Войти серез Google
+          Войти через Google
         </button>
       </form>
     </div>

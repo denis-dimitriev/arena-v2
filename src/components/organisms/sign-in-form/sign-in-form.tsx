@@ -1,20 +1,33 @@
 import { Logo } from '../../ui/atoms/logo/logo';
 import { GoogleIcon } from '../../../assets';
-import { ChangeEvent, useReducer } from 'react';
+import { ChangeEvent, FormEvent, useReducer } from 'react';
 import {
   loginReducer,
   initialLoginState,
   LoginActionsTypes
 } from '../../../reducers/login.reducer';
+import cn from 'classnames';
+import { useAlert } from '../../../hooks/useAlert';
+import {
+  signInUserWithEmailAndPassword,
+  signInWithGoogleRedirect
+} from '../../../firebase/firebase.auth';
+import { useNavigate } from 'react-router-dom';
 
 const SignInForm = () => {
   const [state, dispatch] = useReducer(loginReducer, initialLoginState);
+  const {
+    alert: { error, success },
+    setAlert
+  } = useAlert();
+  const navigate = useNavigate();
 
   const onInputEmailHandler = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: LoginActionsTypes.ADD_EMAIL,
       payload: event.target.value
     });
+    setAlert({ error, success: true });
   };
 
   const onInputPasswordHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -31,13 +44,25 @@ const SignInForm = () => {
     });
   };
 
+  const onSignInSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    const { email, password } = state;
+    event.preventDefault();
+
+    const user = await signInUserWithEmailAndPassword(email, password);
+    if (user) {
+      navigate('/');
+    }
+  };
+
   return (
     <div className="auth__form">
-      <form className="w-100 d-flex align-items-center flex-column gap-md-2">
+      <form
+        className="w-100 d-flex align-items-center flex-column gap-md-2"
+        onSubmit={onSignInSubmit}>
         <Logo />
         <h1 className="h3 mb-3">Вход</h1>
 
-        <div className="form-floating w-100">
+        <div className={cn('form-floating w-100', { 'was-validated': success })}>
           <input
             type="email"
             className="form-control"
@@ -60,7 +85,7 @@ const SignInForm = () => {
 
         <div className="checkbox mb-3">
           <label>
-            <input type="checkbox" value="remember_me" onChange={onInputRememberHandler} />{' '}
+            <input type="checkbox" value="remember-me" onChange={onInputRememberHandler} />{' '}
             Запомнить меня
           </label>
         </div>
@@ -70,9 +95,10 @@ const SignInForm = () => {
         <p className="m-1">Или</p>
         <button
           className="w-100 btn btn-lg btn-outline-secondary d-flex gap-sm-2 align-items-center justify-content-center"
-          type="submit">
+          type="button"
+          onClick={signInWithGoogleRedirect}>
           <GoogleIcon />
-          Войти серез Google
+          Войти через Google
         </button>
       </form>
     </div>

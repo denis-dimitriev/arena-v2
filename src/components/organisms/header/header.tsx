@@ -1,10 +1,10 @@
 import './header.scss';
 
-import { useScrollTranslateElement } from '../../hooks/useScrollTranslateElement';
+import { useScrollTranslateElement } from '../../../hooks/useScrollTranslateElement';
 import { Logo } from '../../ui/atoms/logo/logo';
 import { Link } from 'react-router-dom';
 import { SearchForm } from '../../molecules/search-form/search-form';
-import {FavoriteIcon, WatchedIcon} from "../../../assets";
+import { FavoriteIcon, WatchedIcon } from '../../../assets';
 
 export const Header = () => {
   const { translate } = useScrollTranslateElement();

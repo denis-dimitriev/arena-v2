@@ -1,6 +1,13 @@
+@import "src/styles/styles";
+
 .layout {
   width: 100%;
   height: 100%;
   position: relative;
-  overflow: hidden;
+
+
+  .up {
+    transition: transform 0.5s cubic-bezier(0.8, 0.2, 0.2, 0.8);
+    transform: translateY(toRem(-72));
+  }
 }
