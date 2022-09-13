@@ -1,21 +1,32 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
+import { createContext, Dispatch, ReactNode, useState } from 'react';
+import { IUserType } from '../types/user.type';
 
 interface IUserContext {
-  currentUser: Record<string, never> | null;
-  setCurrentUser: Dispatch<SetStateAction<any>>;
+  currentUser: {
+    user: null | {};
+    loading: boolean;
+    error: null | string;
+  };
+  setCurrentUser: Dispatch<IUserContext>;
 }
 
-export const UserContext = createContext<IUserContext>({
-  currentUser: null,
+const initValue: IUserContext = {
+  currentUser: {
+    user: null,
+    loading: false,
+    error: null
+  },
   setCurrentUser: () => null
-});
+};
+
+export const UserContext = createContext<IUserContext>(initValue);
 
 interface IUserProvider {
   children: ReactNode;
 }
 
 export const UserProvider = ({ children }: IUserProvider) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState();
 
   const value = {
     currentUser,

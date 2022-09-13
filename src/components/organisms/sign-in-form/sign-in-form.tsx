@@ -1,13 +1,11 @@
 import { Logo } from '../../ui/atoms/logo/logo';
 import { GoogleIcon } from '../../../assets';
-import { ChangeEvent, FormEvent, useReducer } from 'react';
+import { ChangeEvent, FormEvent, useContext, useEffect, useReducer } from 'react';
 import {
   loginReducer,
   initialLoginState,
   LoginActionsTypes
 } from '../../../reducers/login.reducer';
-import cn from 'classnames';
-import { useAlert } from '../../../hooks/useAlert';
 import {
   signInUserWithEmailAndPassword,
   signInWithGoogleRedirect
@@ -17,22 +15,23 @@ import {
   initialFetchUserState,
   FetchUserActionTypes
 } from '../../../reducers/fetch-user.reducer';
+import { UserContext } from '../../../context/user.context';
+import { Spinner } from '../../ui/atoms/spinner/spinner';
 
 const SignInForm = () => {
   const [login, loginDispatch] = useReducer(loginReducer, initialLoginState);
   const [fetchedUser, fetchUserDispatch] = useReducer(fetchUserReducer, initialFetchUserState);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  const {
-    alert: { error, success },
-    setAlert
-  } = useAlert();
+  useEffect(() => {
+    setCurrentUser(fetchedUser);
+  }, [fetchedUser]);
 
   const onInputEmailHandler = (event: ChangeEvent<HTMLInputElement>) => {
     loginDispatch({
       type: LoginActionsTypes.ADD_EMAIL,
       payload: event.target.value
     });
-    setAlert({ error, success: true });
   };
 
   const onInputPasswordHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -72,6 +71,10 @@ const SignInForm = () => {
       });
   };
 
+  if (currentUser?.loading) {
+    return <Spinner />;
+  }
+
   return (
     <div className="auth__form">
       <form
@@ -80,7 +83,7 @@ const SignInForm = () => {
         <Logo />
         <h1 className="h3 mb-3">Вход</h1>
 
-        <div className={cn('form-floating w-100', { 'was-validated': success })}>
+        <div className="form-floating w-100">
           <input
             type="email"
             className="form-control"

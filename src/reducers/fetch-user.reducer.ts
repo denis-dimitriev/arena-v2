@@ -1,10 +1,4 @@
-import { useEffect } from 'react';
-
-interface IFetchUser {
-  user: {} | null;
-  loading: boolean;
-  error: string;
-}
+import { IUserType } from '../types/user.type';
 
 export enum FetchUserActionTypes {
   FETCH_USER_LOADING = 'FETCH_USER_LOADING',
@@ -28,13 +22,13 @@ interface fetchUserErrorAction {
 
 type fetchUserActionType = fetchUserLoadingAction | fetchUserSuccessAction | fetchUserErrorAction;
 
-export const initialFetchUserState: IFetchUser = {
+export const initialFetchUserState: IUserType = {
   user: null,
   loading: false,
-  error: ''
+  error: null
 };
 
-export const fetchUserReducer = (state: IFetchUser, action: fetchUserActionType): IFetchUser => {
+export const fetchUserReducer = (state: IUserType, action: fetchUserActionType): IUserType => {
   switch (action.type) {
     case FetchUserActionTypes.FETCH_USER_LOADING:
       return {
