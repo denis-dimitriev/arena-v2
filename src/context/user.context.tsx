@@ -1,17 +1,13 @@
-import { createContext, useState, useEffect, ReactNode, Dispatch, SetStateAction } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/firebase.auth';
+import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
 
 interface IUserContext {
-  currentUser: {} | null;
-  setCurrentUser: Dispatch<SetStateAction<unknown>>;
+  currentUser: Record<string, never> | null;
+  setCurrentUser: Dispatch<SetStateAction<any>>;
 }
 
 export const UserContext = createContext<IUserContext>({
   currentUser: null,
-  setCurrentUser: () => {
-    // nu ma zaibi
-  }
+  setCurrentUser: () => null
 });
 
 interface IUserProvider {
@@ -20,12 +16,6 @@ interface IUserProvider {
 
 export const UserProvider = ({ children }: IUserProvider) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const subscribe = onAuthStateChanged(auth, (user: any) => setCurrentUser(user));
-    return subscribe;
-  }, [currentUser, setCurrentUser]);
 
   const value = {
     currentUser,

@@ -3,12 +3,13 @@
 .auth {
   width: 100%;
   height: 100vh;
-  background-color: $gray-200;
+  background-color: $white;
+
   overflow: hidden;
 
   &__form {
     min-width: $extra-small;
-    background-color: $white;
+    background-color: $gray-100;
     border-radius: 10px;
   }
 }

@@ -1,0 +1,9 @@
+.user__dropdown .dropdown-menu {
+  right: 0;
+}
+.user__dropdown svg {
+  fill: white;
+  transform: scale(1.2);
+}
+
+/*# sourceMappingURL=user-dropdown-menu.css.map */

@@ -12,18 +12,23 @@ import {
   signInUserWithEmailAndPassword,
   signInWithGoogleRedirect
 } from '../../../firebase/firebase.auth';
-import { useNavigate } from 'react-router-dom';
+import {
+  fetchUserReducer,
+  initialFetchUserState,
+  FetchUserActionTypes
+} from '../../../reducers/fetch-user.reducer';
 
 const SignInForm = () => {
-  const [state, dispatch] = useReducer(loginReducer, initialLoginState);
+  const [login, loginDispatch] = useReducer(loginReducer, initialLoginState);
+  const [fetchedUser, fetchUserDispatch] = useReducer(fetchUserReducer, initialFetchUserState);
+
   const {
     alert: { error, success },
     setAlert
   } = useAlert();
-  const navigate = useNavigate();
 
   const onInputEmailHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch({
+    loginDispatch({
       type: LoginActionsTypes.ADD_EMAIL,
       payload: event.target.value
     });
@@ -31,27 +36,40 @@ const SignInForm = () => {
   };
 
   const onInputPasswordHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch({
+    loginDispatch({
       type: LoginActionsTypes.ADD_PASSWORD,
       payload: event.target.value
     });
   };
 
   const onInputRememberHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch({
+    loginDispatch({
       type: LoginActionsTypes.ADD_REMEMBER_ME,
       payload: event.target.checked
     });
   };
 
   const onSignInSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    const { email, password } = state;
+    const { email, password } = login;
     event.preventDefault();
 
-    const user = await signInUserWithEmailAndPassword(email, password);
-    if (user) {
-      navigate('/');
-    }
+    fetchUserDispatch({
+      type: FetchUserActionTypes.FETCH_USER_LOADING
+    });
+
+    await signInUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        fetchUserDispatch({
+          type: FetchUserActionTypes.FETCH_USER_SUCCESS,
+          payload: userCredential.user
+        });
+      })
+      .catch((error) => {
+        fetchUserDispatch({
+          type: FetchUserActionTypes.FETCH_USER_ERROR,
+          payload: error.message.toString()
+        });
+      });
   };
 
   return (

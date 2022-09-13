@@ -53,8 +53,9 @@ const SignUpForm = () => {
       alert('Пароли не совпадают');
       return;
     }
+
     setAlert({ success: true, error: false });
-    const user = await createNewUserWithEmailAndPassword(email, password);
+    await createNewUserWithEmailAndPassword(email, password);
   };
 
   return (
