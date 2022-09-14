@@ -7,7 +7,7 @@ import {
   LoginActionsTypes
 } from '../../../reducers/login.reducer';
 import {
-  signInUserWithEmailAndPassword,
+  signInUserWithEmailAndPassword, signInWithGooglePopUp,
   signInWithGoogleRedirect
 } from '../../../firebase/firebase.auth';
 import {
@@ -16,12 +16,12 @@ import {
   FetchUserActionTypes
 } from '../../../reducers/fetch-user.reducer';
 import { UserContext } from '../../../context/user.context';
-import { Spinner } from '../../ui/atoms/spinner/spinner';
+import {signInWithPopup} from "firebase/auth";
 
 const SignInForm = () => {
   const [login, loginDispatch] = useReducer(loginReducer, initialLoginState);
   const [fetchedUser, fetchUserDispatch] = useReducer(fetchUserReducer, initialFetchUserState);
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
     setCurrentUser(fetchedUser);
@@ -71,8 +71,24 @@ const SignInForm = () => {
       });
   };
 
-  if (currentUser.loading) {
-    return <Spinner />
+  const onGoogleSignInHandler = async () => {
+    fetchUserDispatch({
+      type: FetchUserActionTypes.FETCH_USER_LOADING
+    })
+
+    await signInWithGooglePopUp()
+        .then((userCredential) => {
+      fetchUserDispatch({
+        type: FetchUserActionTypes.FETCH_USER_SUCCESS,
+        payload: userCredential.user
+      });
+    })
+        .catch((error) => {
+          fetchUserDispatch({
+            type: FetchUserActionTypes.FETCH_USER_ERROR,
+            payload: error.message.toString()
+          });
+        });
   }
 
   return (
@@ -117,7 +133,7 @@ const SignInForm = () => {
         <button
           className="w-100 btn btn-lg btn-outline-secondary d-flex gap-sm-2 align-items-center justify-content-center"
           type="button"
-          onClick={signInWithGoogleRedirect}>
+          onClick={onGoogleSignInHandler}>
           <GoogleIcon />
           Войти через Google
         </button>

@@ -5,6 +5,7 @@ import SignUpForm from '../../organisms/sign-up-form/sign-up-form';
 import { useState, Fragment, useEffect, useContext } from 'react';
 import { UserContext } from '../../../context/user.context';
 import { useNavigate } from 'react-router-dom';
+import {Spinner} from "../../ui/atoms/spinner/spinner";
 
 const Authentication = () => {
   const [signUp, setSignUo] = useState<boolean>(false);
@@ -19,6 +20,10 @@ const Authentication = () => {
       navigate('/');
     }
   }, [currentUser]);
+
+  if (currentUser.loading) {
+    return <Spinner />
+  }
 
   return (
     <div className="auth d-flex flex-column align-items-center justify-content-center">
