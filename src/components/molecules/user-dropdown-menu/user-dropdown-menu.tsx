@@ -9,6 +9,11 @@ import { signOutUser } from '../../../firebase/firebase.auth';
 export const UserDropdownMenu = () => {
   const { trigger, onTriggerPushHandler } = useTrigger();
 
+  const onUserSignOutHandler = async () => {
+    onTriggerPushHandler()
+    await signOutUser()
+  }
+
   return (
     <div className="user__dropdown dropstart">
       <button
@@ -38,7 +43,7 @@ export const UserDropdownMenu = () => {
         <li>
           <button
             className="btn btn-outline-dark w-100 text-start text-white"
-            onClick={signOutUser}>
+            onClick={onUserSignOutHandler}>
             Выёти
           </button>
         </li>

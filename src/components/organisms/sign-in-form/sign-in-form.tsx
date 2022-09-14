@@ -71,8 +71,8 @@ const SignInForm = () => {
       });
   };
 
-  if (currentUser?.loading) {
-    return <Spinner />;
+  if (currentUser.loading) {
+    return <Spinner />
   }
 
   return (

@@ -30,7 +30,7 @@ export const Header = () => {
             <FavoriteIcon />
           </Link>
 
-          {currentUser ? (
+          {currentUser.user ? (
             <UserDropdownMenu />
           ) : (
             <Link className="btn btn-outline-secondary btn-close-white" to="authentication">

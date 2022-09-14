@@ -1,4 +1,4 @@
-import { IUserType } from '../types/user.type';
+import { IUserFetch } from '../types/user.type';
 
 export enum FetchUserActionTypes {
   FETCH_USER_LOADING = 'FETCH_USER_LOADING',
@@ -22,13 +22,13 @@ interface fetchUserErrorAction {
 
 type fetchUserActionType = fetchUserLoadingAction | fetchUserSuccessAction | fetchUserErrorAction;
 
-export const initialFetchUserState: IUserType = {
+export const initialFetchUserState: IUserFetch = {
   user: null,
   loading: false,
   error: null
 };
 
-export const fetchUserReducer = (state: IUserType, action: fetchUserActionType): IUserType => {
+export const fetchUserReducer = (state: IUserFetch, action: fetchUserActionType): IUserFetch => {
   switch (action.type) {
     case FetchUserActionTypes.FETCH_USER_LOADING:
       return {

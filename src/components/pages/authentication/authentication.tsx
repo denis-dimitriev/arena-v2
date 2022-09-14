@@ -15,7 +15,7 @@ const Authentication = () => {
   const onSignUpHandler = () => setSignUo(true);
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser.user) {
       navigate('/');
     }
   }, [currentUser]);

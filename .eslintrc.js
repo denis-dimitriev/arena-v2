@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    '@typescript-eslint/no-empty-function': 'error',
+    '@typescript-eslint/no-empty-function': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/ban-types': [
       'error',

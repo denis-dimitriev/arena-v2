@@ -1,34 +1,44 @@
-import { createContext, Dispatch, ReactNode, useState } from 'react';
-import { IUserType } from '../types/user.type';
+import {createContext, Dispatch, ReactNode, useEffect, useState} from 'react';
+import {IUserFetch, IUserType} from '../types/user.type';
+import { onAuthStateChanged } from "firebase/auth";
+import {arenaAuth} from "../firebase/firebase.auth";
 
-interface IUserContext {
-  currentUser: {
-    user: null | {};
-    loading: boolean;
-    error: null | string;
-  };
-  setCurrentUser: Dispatch<IUserContext>;
+interface IUserContext{
+  currentUser: IUserFetch
+  setCurrentUser: Dispatch<IUserFetch>;
 }
 
-const initValue: IUserContext = {
-  currentUser: {
-    user: null,
-    loading: false,
-    error: null
-  },
-  setCurrentUser: () => null
+const initCtxState: IUserFetch = {
+  user: null,
+  loading: false,
+  error: null
+}
+
+const initCtxValue: IUserContext = {
+  currentUser: initCtxState,
+  setCurrentUser: () => {}
 };
 
-export const UserContext = createContext<IUserContext>(initValue);
+export const UserContext = createContext<IUserContext>(initCtxValue);
 
 interface IUserProvider {
   children: ReactNode;
 }
 
 export const UserProvider = ({ children }: IUserProvider) => {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState<IUserFetch>(initCtxState);
 
-  const value = {
+  useEffect(() => {
+    onAuthStateChanged(arenaAuth, (user: IUserType) => {
+      setCurrentUser(state => {
+        return {
+          ...state, user
+        }
+      })
+    })
+  }, [])
+
+  const value: IUserContext = {
     currentUser,
     setCurrentUser
   };
