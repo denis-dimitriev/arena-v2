@@ -1,22 +1,18 @@
 import { Logo } from '../../ui/atoms/logo/logo';
-import { GoogleIcon } from '../../../assets';
 import { ChangeEvent, FormEvent, useContext, useEffect, useReducer } from 'react';
 import {
   loginReducer,
   initialLoginState,
   LoginActionsTypes
 } from '../../../reducers/login.reducer';
-import {
-  signInUserWithEmailAndPassword, signInWithGooglePopUp,
-  signInWithGoogleRedirect
-} from '../../../firebase/firebase.auth';
+import { signInUserWithEmailAndPassword } from '../../../firebase/firebase.auth';
 import {
   fetchUserReducer,
   initialFetchUserState,
   FetchUserActionTypes
 } from '../../../reducers/fetch-user.reducer';
 import { UserContext } from '../../../context/user.context';
-import {signInWithPopup} from "firebase/auth";
+import { GoogleProvider } from '../../molecules/google-provider/google-provider';
 
 const SignInForm = () => {
   const [login, loginDispatch] = useReducer(loginReducer, initialLoginState);
@@ -71,26 +67,6 @@ const SignInForm = () => {
       });
   };
 
-  const onGoogleSignInHandler = async () => {
-    fetchUserDispatch({
-      type: FetchUserActionTypes.FETCH_USER_LOADING
-    })
-
-    await signInWithGooglePopUp()
-        .then((userCredential) => {
-      fetchUserDispatch({
-        type: FetchUserActionTypes.FETCH_USER_SUCCESS,
-        payload: userCredential.user
-      });
-    })
-        .catch((error) => {
-          fetchUserDispatch({
-            type: FetchUserActionTypes.FETCH_USER_ERROR,
-            payload: error.message.toString()
-          });
-        });
-  }
-
   return (
     <div className="auth__form">
       <form
@@ -130,13 +106,7 @@ const SignInForm = () => {
           Войти
         </button>
         <p className="m-1">Или</p>
-        <button
-          className="w-100 btn btn-lg btn-outline-secondary d-flex gap-sm-2 align-items-center justify-content-center"
-          type="button"
-          onClick={onGoogleSignInHandler}>
-          <GoogleIcon />
-          Войти через Google
-        </button>
+        <GoogleProvider />
       </form>
     </div>
   );

@@ -1,5 +1,4 @@
 import { Logo } from '../../ui/atoms/logo/logo';
-import { GoogleIcon } from '../../../assets';
 import { ChangeEvent, FormEvent, useReducer } from 'react';
 import {
   SignUpReducer,
@@ -9,10 +8,8 @@ import {
 import { useAlert } from '../../../hooks/useAlert';
 
 import cn from 'classnames';
-import {
-  createNewUserWithEmailAndPassword,
-  signInWithGoogleRedirect
-} from '../../../firebase/firebase.auth';
+import { createNewUserWithEmailAndPassword } from '../../../firebase/firebase.auth';
+import { GoogleProvider } from '../../molecules/google-provider/google-provider';
 
 const SignUpForm = () => {
   const [state, dispatch] = useReducer(SignUpReducer, initialSignUpFields);
@@ -101,13 +98,7 @@ const SignUpForm = () => {
           Войти
         </button>
         <p className="m-1">Или</p>
-        <button
-          className="w-100 btn btn-lg btn-outline-secondary d-flex gap-sm-2 align-items-center justify-content-center"
-          type="button"
-          onClick={signInWithGoogleRedirect}>
-          <GoogleIcon />
-          Войти через Google
-        </button>
+        <GoogleProvider />
       </form>
     </div>
   );
