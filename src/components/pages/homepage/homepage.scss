@@ -1,0 +1,12 @@
+@import "src/styles/styles";
+
+.homepage {
+
+  margin-top: toRem(100);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: toRem(20);
+  }
+}

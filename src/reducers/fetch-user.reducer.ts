@@ -3,7 +3,7 @@ import { IUserFetch } from '../types/user.type';
 export enum FetchUserActionTypes {
   FETCH_USER_LOADING = 'FETCH_USER_LOADING',
   FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS',
-  FETCH_USER_ERROR = 'FETCH_USER_ERROR'
+  FETCH_USER_ERROR = 'FETCH_USER_ERROR',
 }
 
 interface fetchUserLoadingAction {
@@ -20,7 +20,7 @@ interface fetchUserErrorAction {
   payload: string;
 }
 
-type fetchUserActionType = fetchUserLoadingAction | fetchUserSuccessAction | fetchUserErrorAction;
+type fetchUserActionType = fetchUserLoadingAction | fetchUserSuccessAction | fetchUserErrorAction
 
 export const initialFetchUserState: IUserFetch = {
   user: null,

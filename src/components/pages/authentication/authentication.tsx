@@ -21,8 +21,6 @@ const Authentication = () => {
     }
   }, [currentUser]);
 
-  console.log(currentUser);
-
   if (currentUser.loading) {
     return <Spinner />;
   }

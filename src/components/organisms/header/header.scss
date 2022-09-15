@@ -7,8 +7,9 @@
   right: 0;
   z-index: 99;
   height: toRem(72);
-  position: sticky;
-  transition: transform 0.5s cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  position: fixed;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
 
   &_hidden {
     transform: translateY(-100%);
@@ -23,9 +24,17 @@
   }
 
   &__link {
+
     svg {
       transform: scale(1.2);
       fill: $white;
+      transition: all 100ms ease-in-out;
+    }
+    &:hover {
+      svg {
+        fill: $gray-500;
+
+      }
     }
   }
 }

@@ -14,9 +14,12 @@
   box-sizing: border-box;
 }
 
+html,
 body {
+  height: 100%;
   background-color: $gray-100;
   font-family: 'Raleway', sans-serif;
+  line-height: 1;
   font-weight: 400;
   font-size: toRem(16);
   color: $black;
@@ -26,6 +29,11 @@ ul,
 ol,
 li {
   list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
 }
 
 svg {

@@ -1,22 +1,22 @@
-import { useEffect, useState, UIEvent } from 'react';
+import { useEffect, useState  } from 'react';
 
 export const useScrollTranslateElement = () => {
   const [translate, setTranslate] = useState<boolean>(false);
 
+  const handleScroll = (event: WheelEvent) => {
+    event.deltaY > 0 ? setTranslate(true) : setTranslate(false)
+  };
+
+
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
-
-    const handleScroll = (event: WheelEvent) => {
-      if (event.deltaY > 0) setTranslate(true);
-      if (event.deltaY < 0) setTranslate(false);
-    };
-
-    window.addEventListener('wheel', (e) => {
-      timeout = setTimeout(() => handleScroll(e), 300);
+    const homepage = document.getElementById('homepage')
+    homepage?.addEventListener('wheel', (e) => {
+      timeout = setTimeout(() => handleScroll(e), 100);
     });
 
     return () => {
-      window.removeEventListener('wheel', handleScroll);
+      homepage?.removeEventListener('wheel', handleScroll);
       clearTimeout(timeout);
     };
   }, []);

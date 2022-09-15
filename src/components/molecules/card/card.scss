@@ -1,0 +1,14 @@
+@import "src/styles/styles";
+
+.card {
+  width: toEm(285);
+  background-color: $white;
+
+  @media screen and (max-width: $tablet){
+    width: 45%;
+  }
+
+  @media screen and (max-width: $small-phone){
+    width: toEm(320);
+  }
+}

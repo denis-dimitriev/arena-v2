@@ -102,7 +102,7 @@ const SignInForm = () => {
             Запомнить меня
           </label>
         </div>
-        <button className="w-100 btn btn-lg btn-primary" type="submit">
+        <button className="w-100 btn btn-lg btn-primary rounded-0" type="submit">
           Войти
         </button>
         <p className="m-1">Или</p>

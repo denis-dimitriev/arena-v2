@@ -38,7 +38,7 @@ export const GoogleProvider = () => {
   return (
     <div className="w-100">
       <button
-        className="w-100 btn btn-lg btn-outline-secondary d-flex gap-sm-2 align-items-center justify-content-center"
+        className="w-100 btn btn-lg btn-secondary rounded-0 d-flex gap-sm-2 align-items-center justify-content-center"
         type="button"
         onClick={onGoogleSignInHandler}>
         <GoogleIcon />

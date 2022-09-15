@@ -1,29 +1,28 @@
 import { Logo } from '../../ui/atoms/logo/logo';
-import { ChangeEvent, FormEvent, useReducer } from 'react';
+import { ChangeEvent, FormEvent, useContext, useReducer } from 'react';
 import {
   SignUpReducer,
   initialSignUpFields,
   SignUpActionsTypes
 } from '../../../reducers/sign-up.reducer';
-import { useAlert } from '../../../hooks/useAlert';
-
-import cn from 'classnames';
 import { createNewUserWithEmailAndPassword } from '../../../firebase/firebase.auth';
 import { GoogleProvider } from '../../molecules/google-provider/google-provider';
+import {
+  FetchUserActionTypes,
+  fetchUserReducer,
+  initialFetchUserState
+} from '../../../reducers/fetch-user.reducer';
+import { UserContext } from '../../../context/user.context';
 
 const SignUpForm = () => {
-  const [state, dispatch] = useReducer(SignUpReducer, initialSignUpFields);
-  const {
-    alert: { error, success },
-    setAlert
-  } = useAlert();
+  const [creatingUser, dispatch] = useReducer(SignUpReducer, initialSignUpFields);
+  const [fetchedUser, fetchUserDispatch] = useReducer(fetchUserReducer, initialFetchUserState);
 
   const onInputEmailHandler = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: SignUpActionsTypes.ADD_EMAIL,
       payload: event.target.value
     });
-    setAlert({ success: true, error });
   };
 
   const onInputPasswordHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,16 +42,29 @@ const SignUpForm = () => {
   const onSignUpSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { email, password, confirmPassword } = state;
+    const { email, password, confirmPassword } = creatingUser;
 
     if (password !== confirmPassword) {
-      setAlert({ error: true, success: false });
       alert('Пароли не совпадают');
       return;
     }
+    fetchUserDispatch({
+      type: FetchUserActionTypes.FETCH_USER_LOADING
+    });
 
-    setAlert({ success: true, error: false });
-    await createNewUserWithEmailAndPassword(email, password);
+    await createNewUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        fetchUserDispatch({
+          type: FetchUserActionTypes.FETCH_USER_SUCCESS,
+          payload: userCredential.user
+        });
+      })
+      .catch((error) => {
+        fetchUserDispatch({
+          type: FetchUserActionTypes.FETCH_USER_ERROR,
+          payload: error.message.toString()
+        });
+      });
   };
 
   return (
@@ -63,7 +75,7 @@ const SignUpForm = () => {
         <Logo />
         <h1 className="h3 mb-3">Регистрация</h1>
 
-        <div className={cn('form-floating w-100', { 'was-validated': success })}>
+        <div className="form-floating w-100">
           <input
             type="email"
             className="form-control"
@@ -76,7 +88,7 @@ const SignUpForm = () => {
         <div className="form-floating w-100">
           <input
             type="password"
-            className={cn('form-control', { 'border-danger': error })}
+            className="form-control"
             id="floatingPassword"
             placeholder="Password"
             onChange={onInputPasswordHandler}
@@ -86,7 +98,7 @@ const SignUpForm = () => {
         <div className="form-floating w-100">
           <input
             type="password"
-            className={cn('form-control', { 'border-danger': error })}
+            className="form-control"
             id="floatingConfirmPassword"
             placeholder="Confirm Password"
             onChange={onInputConfirmPasswordHandler}
@@ -94,8 +106,8 @@ const SignUpForm = () => {
           <label htmlFor="floatingConfirmPassword">Подтвердите пароль</label>
         </div>
 
-        <button className="w-100 btn btn-lg btn-primary" type="submit">
-          Войти
+        <button className="w-100 btn btn-lg btn-primary rounded-0" type="submit">
+          Зарегистрироваться
         </button>
         <p className="m-1">Или</p>
         <GoogleProvider />

@@ -4,7 +4,7 @@ import { useScrollTranslateElement } from '../../../hooks/useScrollTranslateElem
 import { Logo } from '../../ui/atoms/logo/logo';
 import { Link } from 'react-router-dom';
 import { SearchForm } from '../../molecules/search-form/search-form';
-import { FavoriteIcon, UserIcon, WatchedIcon } from '../../../assets';
+import { FavoriteIcon, WatchedIcon } from '../../../assets';
 import { useContext } from 'react';
 import { UserContext } from '../../../context/user.context';
 import { UserDropdownMenu } from '../../molecules/user-dropdown-menu/user-dropdown-menu';
@@ -13,8 +13,9 @@ export const Header = () => {
   const { translate } = useScrollTranslateElement();
   const { currentUser } = useContext(UserContext);
 
+
   return (
-    <header className={`header ${translate && 'header_hidden'} position-relative`}>
+    <header className={`header ${translate && 'header_hidden'}`}>
       <div className="header__container d-flex align-items-center">
         <div className="col d-flex justify-content-start">
           <Logo />
