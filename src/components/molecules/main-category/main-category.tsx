@@ -8,25 +8,25 @@ export const MainCategory = () => {
     <div className="main-category container">
       <ul className="nav nav-pills nav-justified">
         <li className="nav-item">
-          <Link to="#" className="nav-link text-black">
+          <Link to="home/bicycles" className="nav-link text-black">
             <BicycleIcon />
             Велосипеды
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="#" className="nav-link text-black">
+          <Link to="/home/electric-bicycles" className="nav-link text-black">
             <EBicycleIcon />
             Электровелосипеды
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="#" className="nav-link text-black">
+          <Link to="/home/electric-scooters" className="nav-link text-black">
             <EScooterIcon />
             Электроскутеры
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="#" className="nav-link text-black">
+          <Link to="/home/parts-and-accessories" className="nav-link text-black">
             <Parts_AccessoriesIcon />
             Аксессуары
           </Link>
