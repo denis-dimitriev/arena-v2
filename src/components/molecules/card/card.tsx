@@ -1,5 +1,7 @@
 import './card.scss';
 
+import { FavoriteIcon } from '../../../assets';
+
 interface CardProps {
   title: string;
 }
@@ -13,11 +15,16 @@ export const Card = ({ title }: CardProps) => {
         alt="..."
       />
       <div className="card-body">
-        <h6 className="card-title">{title}</h6>
+        <p className="fw-semibold">{title}</p>
       </div>
       <div className="card-footer bg-white">
         <small className="text-muted">Last updated 3 mins ago</small>
-        <p className="card-text">1920 eur</p>
+        <span className="d-flex align-items-center justify-content-between">
+          <p className="card-text m-0">1920 eur</p>
+          <button className="btn border-white">
+            <FavoriteIcon />
+          </button>
+        </span>
       </div>
     </div>
   );

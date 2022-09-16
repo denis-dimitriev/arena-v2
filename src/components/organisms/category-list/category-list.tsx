@@ -4,8 +4,8 @@ import { Card } from '../../molecules/card/card';
 
 export const CategoryList = () => {
   return (
-    <div className="container-lg">
-      <div className="row row-cols-1 row-cols-md-4 gap-3 justify-content-center">
+    <div className="container-sm">
+      <div className="row row-cols-1 row-cols-md-4 gap-2 justify-content-center">
         <Card title={'Bicicleta de munte professionala'} />
         <Card
           title={
