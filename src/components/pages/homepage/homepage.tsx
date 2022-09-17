@@ -1,7 +1,7 @@
 import './homepage.scss';
 
 import { MainCategory } from '../../molecules/main-category/main-category';
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Products from '../products/products';
 import Bicycles from '../bicycles/bicycles';
 import ElectricBicycles from '../electric-bicycles/electric-bicycles';

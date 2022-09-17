@@ -14,40 +14,40 @@ export const UserDropdownMenu = () => {
   const { setCurrentUser } = useContext(UserContext);
 
   const onUserSignOutHandler = async () => {
-    setCurrentUser(initialFetchUserState)
+    setCurrentUser(initialFetchUserState);
     onTriggerPushHandler();
     await signOutUser();
   };
 
   return (
-    <div className='user__dropdown dropstart'>
+    <div className="user__dropdown dropstart">
       <button
-        type='button'
-        className='btn dropdown-toggle p-0'
-        data-bs-toggle='dropdown'
-        aria-expanded='false'
+        type="button"
+        className="btn dropdown-toggle p-0"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
         onClick={onTriggerPushHandler}>
         <UserIcon />
       </button>
       <ul className={cn('dropdown-menu dropdown-menu-dark', { show: trigger })}>
         <li>
-          <Link to='#' className='dropdown-item'>
+          <Link to="#" className="dropdown-item">
             Action
           </Link>
         </li>
         <li>
-          <Link to='#' className='dropdown-item'>
+          <Link to="#" className="dropdown-item">
             Action two
           </Link>
         </li>
         <li>
-          <Link to='#' className='dropdown-item'>
-            Action three
+          <Link to="/user-cabinet" className="dropdown-item" onClick={onTriggerPushHandler}>
+            Личный кабинет
           </Link>
         </li>
         <li>
           <button
-            className='btn btn-outline-dark w-100 text-start text-white'
+            className="btn btn-outline-dark w-100 text-start text-white"
             onClick={onUserSignOutHandler}>
             Выёти
           </button>
