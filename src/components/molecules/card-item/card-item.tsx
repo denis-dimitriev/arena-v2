@@ -1,22 +1,22 @@
-import './card.scss';
+import './card-item.scss';
 
 import { FavoriteIcon } from '../../../assets';
+import { Card } from 'react-bootstrap';
 
 interface CardProps {
   title: string;
 }
 
-export const Card = ({ title }: CardProps) => {
+export const CardItem = ({ title }: CardProps) => {
   return (
-    <div className="card p-0">
-      <img
+    <Card className="p-0">
+      <Card.Img
+        variant="top"
         src="https://i.simpalsmedia.com/999.md/BoardImages/320x240/408e299ed702e0aff3ba20e896722af6.jpg"
-        className="card-img-top"
-        alt="..."
       />
-      <div className="card-body">
+      <Card.Body>
         <p className="fw-semibold">{title}</p>
-      </div>
+      </Card.Body>
       <div className="card-footer bg-white">
         <small className="text-muted">Last updated 3 mins ago</small>
         <span className="d-flex align-items-center justify-content-between">
@@ -26,6 +26,6 @@ export const Card = ({ title }: CardProps) => {
           </button>
         </span>
       </div>
-    </div>
+    </Card>
   );
 };

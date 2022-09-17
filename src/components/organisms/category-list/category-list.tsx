@@ -1,29 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card } from '../../molecules/card/card';
+import CardGroup from 'react-bootstrap/CardGroup';
+import { CardItem } from '../../molecules/card-item/card-item';
+import { Row } from 'react-bootstrap';
 
 export const CategoryList = () => {
   return (
     <div className="container-sm">
-      <div className="row row-cols-1 row-cols-md-4 gap-2 justify-content-center">
-        <Card title={'Bicicleta de munte professionala'} />
-        <Card
+      <Row className="p-5 gap-2 gy-3">
+        <CardItem title={'Bicicleta de munte professionala'} />
+        <CardItem
           title={
             'Белорусские велосипеды aist в ассортименте / biciclete pentru adulti in sortiment "aist"'
           }
         />
-        <Card
+        <CardItem
           title={
             'Новые велосипеды. Самые низкие цены. Бесплатная доставка. 0% на 4 месяца . Гарантия'
           }
         />
-        <Card title={'Specialized'} />
-        <Card title={'Specialized'} />
-        <Card title={'Specialized'} />
-        <Card title={'Specialized'} />
-        <Card title={'Specialized'} />
-        <Card title={'Specialized'} />
-      </div>
+        <CardItem title={'Specialized'} />
+        <CardItem title={'Specialized'} />
+        <CardItem title={'Specialized'} />
+        <CardItem title={'Specialized'} />
+        <CardItem title={'Specialized'} />
+        <CardItem title={'Specialized'} />
+      </Row>
     </div>
   );
 };
