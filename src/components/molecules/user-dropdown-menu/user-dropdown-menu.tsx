@@ -31,8 +31,11 @@ export const UserDropdownMenu = () => {
       </button>
       <ul className={cn('dropdown-menu dropdown-menu-dark', { show: trigger })}>
         <li>
-          <Link to="#" className="dropdown-item">
-            Action
+          <Link
+            to="/add-new-advertisement"
+            className="dropdown-item"
+            onClick={onTriggerPushHandler}>
+            Новое объявление
           </Link>
         </li>
         <li>

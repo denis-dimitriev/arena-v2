@@ -9,7 +9,7 @@ interface CardProps {
 
 export const CardItem = ({ title }: CardProps) => {
   return (
-    <Card className="p-0">
+    <Card className="card-item">
       <Card.Img
         variant="top"
         src="https://i.simpalsmedia.com/999.md/BoardImages/320x240/408e299ed702e0aff3ba20e896722af6.jpg"
@@ -17,7 +17,7 @@ export const CardItem = ({ title }: CardProps) => {
       <Card.Body>
         <p className="fw-semibold">{title}</p>
       </Card.Body>
-      <div className="card-footer bg-white">
+      <Card.Footer className="bg-white border-0">
         <small className="text-muted">Last updated 3 mins ago</small>
         <span className="d-flex align-items-center justify-content-between">
           <p className="card-text m-0">1920 eur</p>
@@ -25,7 +25,7 @@ export const CardItem = ({ title }: CardProps) => {
             <FavoriteIcon />
           </button>
         </span>
-      </div>
+      </Card.Footer>
     </Card>
   );
 };

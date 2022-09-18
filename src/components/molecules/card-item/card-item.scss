@@ -1,7 +1,10 @@
 @import "src/styles/styles";
 
-.card {
-  width: toEm(285);
+.card-item {
+  min-width: toEm(285);
+  max-width: toEm(320)!important;
+  padding: toRem(10)!important;
+  border: none!important;
   background-color: $white;
 
 
@@ -9,7 +12,7 @@
     width: 45%;
   }
 
-  @media screen and (max-width: $small-phone){
-    width: toEm(320);
+  @media (max-width: $small-phone){
+    min-width: toEm(420);
   }
 }

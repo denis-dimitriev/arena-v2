@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap");
 [class*=__container] {
   margin: 0 auto;
-  max-width: 1300px;
+  max-width: 1200px;
   min-width: 320px;
   min-height: 100%;
   padding: 0 0.625rem;
