@@ -1,18 +1,35 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 
 export const ImageUploadForm = () => {
-  const [images, setImages] = useState<string[] | null>(null);
+  const [images, setImages] = useState<string[]>([]);
+  const [uploadFiles, setUploadFiles] = useState<FileList>();
 
   const onUploadImagesHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
     if (event.target.files) {
       const files: FileList = event.target.files;
-      console.log(typeof files);
-
-      /*console.log(URL.createObjectURL(file));*/
+      for (let i = 0; i < files.length; i++) {
+        console.log(files[i].name);
+      }
+      setUploadFiles(files);
     }
   };
+
+  useEffect(() => {
+    const arr: string[] = [];
+    if (uploadFiles) {
+      for (let i = 0; i < uploadFiles?.length; i++) {
+        arr.push(URL.createObjectURL(uploadFiles[i]));
+      }
+    }
+    setImages((prevState) => {
+      return [...prevState, ...arr];
+    });
+  }, [uploadFiles]);
+
+  console.log(images);
 
   return (
     <Row>
