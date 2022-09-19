@@ -6,7 +6,7 @@ import {
   BicycleSuspension,
   BicycleTypes,
   FrameSizes,
-  Materials,
+  FrameMaterials,
   WheelSizes
 } from './bicycle';
 
@@ -36,7 +36,7 @@ export interface IEBicycleSpecs extends IMotor {
   bicycleType?: BicycleTypes;
   frameSize?: FrameSizes;
   wheelSize?: WheelSizes;
-  frameMaterial?: Materials;
+  frameMaterial?: FrameMaterials;
   brakes?: BicycleBrakes;
   suspension?: BicycleSuspension;
   components?: BicycleComponents;

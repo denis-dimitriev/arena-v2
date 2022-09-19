@@ -66,7 +66,7 @@ export type WheelSizes =
   | 'Другое';
 
 export type BicycleOptions = 'Женский' | 'Мужской' | 'Универсальный';
-export type Materials = 'Алюминий' | 'Магний' | 'Сталь' | 'Карбон' | 'Другое';
+export type FrameMaterials = 'Алюминий' | 'Магний' | 'Сталь' | 'Карбон' | 'Другое';
 export type BicycleBrakes = 'Барабанный' | 'Дисковый' | 'Ободной';
 export type BicycleSuspension = 'Передний' | 'Двухподвес' | 'Нет';
 export type BicycleComponents = 'Shimano' | 'Sram' | 'Campagnolo' | 'Другой';
@@ -77,7 +77,7 @@ export interface IBicycle {
   bicycleType?: BicycleTypes;
   frameSize?: FrameSizes;
   wheelSize?: WheelSizes;
-  frameMaterial?: Materials;
+  frameMaterial?: FrameMaterials;
   brakes?: BicycleBrakes;
   suspension?: BicycleSuspension;
   components?: BicycleComponents;

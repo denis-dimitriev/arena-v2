@@ -16,7 +16,7 @@ export interface IUser {
   contact?: string;
   photo?: string;
   password: string;
-  dateRegistration: Date;
+  accountCreatedAt: Date;
   region?: Region;
   rating?: '1' | '2' | '3' | '4' | '5';
   ads?: [];

@@ -52,7 +52,7 @@ export const UserDropdownMenu = () => {
           <button
             className="btn btn-outline-dark w-100 text-start text-white"
             onClick={onUserSignOutHandler}>
-            Выёти
+            Выйти
           </button>
         </li>
       </ul>

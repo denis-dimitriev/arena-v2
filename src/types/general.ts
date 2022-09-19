@@ -33,6 +33,14 @@ export type ColorsTypes =
   | 'Черный'
   | 'Другое';
 
+export type CategoryType = 'Велосипеды' | 'Электровелосипеды' | 'Электросамокаты' | 'Аксессуары';
+export enum CategoryEnum {
+  BICYCLES = 'Велосипеды',
+  ELECTRIC_BICYCLES = 'Электровелосипеды',
+  ELECTRIC_SCOOTERS = 'Электросамокаты',
+  ACCESSORIES = 'Аксессуары'
+}
+
 export type ConditionType = 'На запчасти' | 'Б/у' | 'Новый';
 
 export type CurrencyType = 'лей' | 'eur' | 'usd';

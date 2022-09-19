@@ -6,7 +6,7 @@ import {
   SignUpActionsTypes
 } from '../../../reducers/sign-up.reducer';
 import { createNewUserWithEmailAndPassword } from '../../../firebase/firebase.auth';
-import { GoogleProvider } from '../../molecules/google-provider/google-provider';
+import { GoogleProvider } from '../../features/google-provider/google-provider';
 import {
   FetchUserActionTypes,
   fetchUserReducer,

@@ -12,7 +12,7 @@ import {
   FetchUserActionTypes
 } from '../../../reducers/fetch-user.reducer';
 import { UserContext } from '../../../context/user.context';
-import { GoogleProvider } from '../../molecules/google-provider/google-provider';
+import { GoogleProvider } from '../../features/google-provider/google-provider';
 
 const SignInForm = () => {
   const [login, loginDispatch] = useReducer(loginReducer, initialLoginState);

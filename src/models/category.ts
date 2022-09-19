@@ -1,8 +1,8 @@
-export type Category = 'Велосипеды' | 'Электровелосипеды' | 'Электроскутеры' | 'Аксессуары';
+import { CategoryType } from '../types/general';
 
-export const Categories: Category[] = [
+export const Categories: CategoryType[] = [
   'Велосипеды',
   'Электровелосипеды',
-  'Электроскутеры',
+  'Электросамокаты',
   'Аксессуары'
 ];

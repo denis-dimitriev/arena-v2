@@ -1,5 +1,4 @@
-import { Category } from '../models/category';
-import { CurrencyType, Region } from './general';
+import { CategoryType, CurrencyType, Region } from './general';
 import { IBicycle } from './bicycle';
 import { IEBicycleSpecs } from './e-bicycles';
 import { IEScooter } from './e-scooters';
@@ -9,7 +8,7 @@ export interface IAdvertisement {
   id: number;
   authorId: number;
   title: string;
-  category: Category;
+  category: CategoryType;
   description: string;
   region: Region;
   createdAt: Date;
