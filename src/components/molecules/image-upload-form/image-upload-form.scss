@@ -1,0 +1,35 @@
+@import "src/styles/styles";
+
+.form-upload {
+
+  &__custom {
+    width: toRem(75);
+    height: toRem(75);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: toRem(75);
+    }
+  }
+
+  &__input {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    img {
+      width: toRem(100);
+      height: toRem(100);
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+
+
