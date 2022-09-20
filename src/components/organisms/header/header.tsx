@@ -13,7 +13,6 @@ export const Header = () => {
   const { translate } = useScrollTranslateElement();
   const { currentUser } = useContext(UserContext);
 
-
   return (
     <header className={`header ${translate && 'header_hidden'}`}>
       <div className="header__container d-flex align-items-center">

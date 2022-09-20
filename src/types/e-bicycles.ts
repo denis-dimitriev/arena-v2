@@ -28,7 +28,8 @@ export type EBicycleBrands =
   | 'Rad Power Bikes'
   | 'QuietKat Bikes'
   | 'VVolt'
-  | 'Wing Bikes';
+  | 'Wing Bikes'
+  | 'Другой';
 
 export interface IEBicycleSpecs extends IMotor {
   brand: EBicycleBrands;

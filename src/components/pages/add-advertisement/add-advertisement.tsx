@@ -1,14 +1,14 @@
 import './add-advertisement.scss';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import { CustomSelect } from '../../molecules/custom-select/custom-select';
 import { Categories } from '../../../models/category';
 import { Regions } from '../../../models/region';
 import { Currencies } from '../../../models/currency';
 import { AddSpecifications } from '../../features/add-specifications/add-specifications';
 import { CategoryType } from '../../../types/general';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import Image from 'react-bootstrap/Image';
+import { ChangeEvent, useState } from 'react';
 import { ImageUploadForm } from '../../molecules/image-upload-form/image-upload-form';
+import { CustomInputText } from '../../molecules/custom-input-text/custom-input-text';
 
 const AddAdvertisement = () => {
   const [category, setCategory] = useState<CategoryType | null | string>(null);
@@ -36,16 +36,13 @@ const AddAdvertisement = () => {
             <Form.Group className="mb-3">
               <Form.Label className="fw-semibold">Тип предложения</Form.Label>
               <span className="d-flex gap-3">
-                <Form.Check type="radio" name="offer" value="Продам" label="Продам" />
+                <Form.Check type="radio" name="offer" value="Продам" label="Продам" checked />
                 <Form.Check type="radio" name="offer" value="Куплю" label="Куплю" />
               </span>
             </Form.Group>
           </Col>
         </Row>
-        <Form.Group className="mb-3">
-          <Form.Label className="fw-semibold">Заголовок объявления</Form.Label>
-          <Form.Control type="text" placeholder="Абвгде" />
-        </Form.Group>
+        <CustomInputText label={'Заголовок объявления'} />
         <Form.Group className="mb-3">
           <Form.Label className="fw-semibold">Текст объявления</Form.Label>
           <Form.Control as="textarea" rows={8} />
@@ -55,10 +52,7 @@ const AddAdvertisement = () => {
             <CustomSelect label={'Регион'} options={Regions} />
           </Col>
           <Col xs={2}>
-            <Form.Group className="mb-3">
-              <Form.Label className="fw-semibold">Цена</Form.Label>
-              <Form.Control type="text" placeholder="0.00" disabled={negotiable} />
-            </Form.Group>
+            <CustomInputText label={'Цена'} placeholder="0.00" disabled={negotiable} />
           </Col>
           <Col xs={2}>
             <CustomSelect label="Валюта" options={Currencies} disabled={negotiable} />
@@ -79,6 +73,11 @@ const AddAdvertisement = () => {
           <AddSpecifications category={category} />
         </Col>
         <ImageUploadForm />
+        <Form.Group className="w-25 mt-5 mb-5">
+          <Button variant="primary" className="w-100" type="submit">
+            Добавить объявление
+          </Button>
+        </Form.Group>
       </div>
     </Form>
   );

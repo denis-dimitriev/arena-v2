@@ -9,7 +9,7 @@ import {
   FrameSizes,
   WheelSizes
 } from '../types/bicycle';
-import { ColorsTypes } from '../types/general';
+import { ColorsTypes, ConditionType } from '../types/general';
 
 export const bicycleTypes: BicycleTypes[] = [
   'Горный',
@@ -20,6 +20,7 @@ export const bicycleTypes: BicycleTypes[] = [
   'BMX',
   'Складной',
   'Детский',
+  'Фэтбайк',
   'Другое'
 ];
 
@@ -46,7 +47,7 @@ export const bicycleBrands: BicycleBrands[] = [
   'Другое'
 ];
 
-export const frameMaterials: FrameMaterials[] = ['Алюминий', 'Магний', 'Сталь', 'Карбон', 'Другое'];
+export const frameMaterials: FrameMaterials[] = ['Алюминий', 'Магний', 'Сталь', 'Карбон', 'Другой'];
 
 export const frameSizes: FrameSizes[] = [
   '13',
@@ -82,31 +83,7 @@ export const wheelSizes: WheelSizes[] = [
   'Другое'
 ];
 
-export const brakes: BicycleBrakes[] = ['Барабанный', 'Дисковый', 'Ободной'];
+export const brakes: BicycleBrakes[] = ['Барабанный', 'Дисковый', 'Ободной', 'Другой'];
 export const suspension: BicycleSuspension[] = ['Передний', 'Двухподвес', 'Нет'];
 export const components: BicycleComponents[] = ['Shimano', 'Sram', 'Campagnolo', 'Другой'];
-const options: BicycleOptions[] = ['Женский', 'Мужской', 'Универсальный'];
-
-const colors: ColorsTypes[] = [
-  'Бежевый',
-  'Белый',
-  'Бордовый',
-  'Голубой',
-  'Желтый',
-  'Зелёный',
-  'Золотой',
-  'Коричневый',
-  'Красный',
-  'Малины',
-  'Оранжевый',
-  'Розовый',
-  'Салатовый',
-  'Серебряный',
-  'Серый',
-  'Синий',
-  'Тёмно-зелёный',
-  'Фиолетовый',
-  'Хамелеон',
-  'Черный',
-  'Другое'
-];
+export const options: BicycleOptions[] = ['Женский', 'Мужской', 'Универсальный'];

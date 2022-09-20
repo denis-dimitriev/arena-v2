@@ -16,8 +16,9 @@ export const ImageUploadForm = () => {
       const set = new Set(files);
       set.forEach((value) => {
         arrOfUploadImages.push(URL.createObjectURL(value));
+        set.delete(value);
       });
-      setImages((prevState) => [...prevState, ...arrOfUploadImages]);
+      setImages((prevState) => [...prevState, ...arrOfUploadImages.slice(0, 7)]);
     }
   };
 
@@ -29,7 +30,10 @@ export const ImageUploadForm = () => {
 
   return (
     <Row className="form-upload">
-      <Form.Label className="fw-semibold">Загрузить изображения</Form.Label>
+      <Form.Label className="fw-semibold">
+        Загрузить изображения
+        <span className="fw-light">&nbsp;[8шт]</span>
+      </Form.Label>
       {images?.map((image) => (
         <div className="form-upload__thumbnail" key={image}>
           <Image thumbnail src={image} />

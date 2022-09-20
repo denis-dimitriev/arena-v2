@@ -31,6 +31,7 @@ export type BicycleTypes =
   | 'BMX'
   | 'Складной'
   | 'Детский'
+  | 'Фэтбайк'
   | 'Другое';
 
 export type FrameSizes =
@@ -65,9 +66,9 @@ export type WheelSizes =
   | '29'
   | 'Другое';
 
-export type BicycleOptions = 'Женский' | 'Мужской' | 'Универсальный';
-export type FrameMaterials = 'Алюминий' | 'Магний' | 'Сталь' | 'Карбон' | 'Другое';
-export type BicycleBrakes = 'Барабанный' | 'Дисковый' | 'Ободной';
+export type BicycleOptions = 'Женский' | 'Мужской' | 'Универсальный' | 'Другой';
+export type FrameMaterials = 'Алюминий' | 'Магний' | 'Сталь' | 'Карбон' | 'Другой';
+export type BicycleBrakes = 'Барабанный' | 'Дисковый' | 'Ободной' | 'Другой';
 export type BicycleSuspension = 'Передний' | 'Двухподвес' | 'Нет';
 export type BicycleComponents = 'Shimano' | 'Sram' | 'Campagnolo' | 'Другой';
 

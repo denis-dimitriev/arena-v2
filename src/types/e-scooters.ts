@@ -11,7 +11,7 @@ export type EScooterBrands =
   | 'Ultron'
   | 'Razor'
   | 'Joyor'
-  | 'Другое';
+  | 'Другой`';
 
 export interface IEScooter extends IMotor {
   brand: EScooterBrands;

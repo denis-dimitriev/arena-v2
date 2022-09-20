@@ -1,6 +1,6 @@
 import { ConditionType } from './general';
 
-export type Parts =
+export type PartsTypes =
   | 'Покрышки и Камеры'
   | 'Колеса'
   | 'Амортизаторы и Вилки'
@@ -24,7 +24,7 @@ export type AccessoriesTypes =
   | 'Другое';
 
 export interface IAccessories {
-  parts: Parts;
+  parts: PartsTypes;
   accessoriesType: AccessoriesTypes;
   condition: ConditionType;
 }
