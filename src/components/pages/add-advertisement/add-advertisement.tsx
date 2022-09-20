@@ -7,7 +7,7 @@ import { Currencies } from '../../../models/currency';
 import { AddSpecifications } from '../../features/add-specifications/add-specifications';
 import { CategoryType } from '../../../types/general';
 import { ChangeEvent, useState } from 'react';
-import { ImageUploadForm } from '../../molecules/image-upload-form/image-upload-form';
+import { ImageUploadForm } from '../../features/image-upload-form/image-upload-form';
 import { CustomInputText } from '../../molecules/custom-input-text/custom-input-text';
 
 const AddAdvertisement = () => {

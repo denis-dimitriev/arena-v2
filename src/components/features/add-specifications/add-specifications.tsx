@@ -1,6 +1,5 @@
 import { CategoryType } from '../../../types/general';
-import { Fragment } from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { CustomSelect } from '../../molecules/custom-select/custom-select';
 import {
   bicycleBrands,
