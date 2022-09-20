@@ -1,9 +1,9 @@
 import './image-upload-form.scss';
 
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
-import { addPhotoPng } from '../../../assets';
+import { addPhotoPng, CloseIcon } from '../../../assets';
 
 export const ImageUploadForm = () => {
   const [images, setImages] = useState<string[]>([]);
@@ -11,21 +11,35 @@ export const ImageUploadForm = () => {
   const onUploadImagesHandler = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { files } = event.target;
-    const arr: string[] = [];
+    const arrOfUploadImages: string[] = [];
     if (files) {
       const set = new Set(files);
-      set.forEach((value, value2, set) => {
-        arr.push(URL.createObjectURL(value));
+      set.forEach((value) => {
+        arrOfUploadImages.push(URL.createObjectURL(value));
       });
-      setImages((prevState) => [...prevState, ...arr]);
+      setImages((prevState) => [...prevState, ...arrOfUploadImages]);
     }
   };
 
+  const onCloseBtnHandler = (target: string) => {
+    const index = images.findIndex((img) => img === target);
+    const newArrOfImages: string[] = [...images.slice(0, index), ...images.slice(index + 1)];
+    setImages(newArrOfImages);
+  };
+
   return (
-    <Row>
-      <Col xs={3}>
-        <Form.Group controlId="formFile" className="mb-3 form-upload">
-          <Form.Label className="fw-semibold">Загрузить изображения</Form.Label>
+    <Row className="form-upload">
+      <Form.Label className="fw-semibold">Загрузить изображения</Form.Label>
+      {images?.map((image) => (
+        <div className="form-upload__thumbnail" key={image}>
+          <Image thumbnail src={image} />
+          <span className="form-upload__close-btn" onClick={() => onCloseBtnHandler(image)}>
+            <CloseIcon />
+          </span>
+        </div>
+      ))}
+      <Col>
+        <Form.Group controlId="formFile">
           <label className="form-upload__custom">
             <Image src={addPhotoPng} rounded />
             <Form.Control
@@ -37,11 +51,6 @@ export const ImageUploadForm = () => {
             />
           </label>
         </Form.Group>
-      </Col>
-      <Col className="form-upload__thumbnails mt-5">
-        {images?.map((image) => (
-          <Image key={image} thumbnail src={image} />
-        ))}
       </Col>
     </Row>
   );
