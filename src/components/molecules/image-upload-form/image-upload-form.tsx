@@ -7,34 +7,23 @@ import { addPhotoPng } from '../../../assets';
 
 export const ImageUploadForm = () => {
   const [images, setImages] = useState<string[]>([]);
-  const [uploadFiles, setUploadFiles] = useState<FileList>();
 
   const onUploadImagesHandler = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    if (event.target.files) {
-      const files: FileList = event.target.files;
-      for (let i = 0; i < files.length; i++) {
-        console.log(files[i].name);
-      }
-      setUploadFiles(files);
+    const { files } = event.target;
+    const arr: string[] = [];
+    if (files) {
+      const set = new Set(files);
+      set.forEach((value, value2, set) => {
+        arr.push(URL.createObjectURL(value));
+      });
+      setImages((prevState) => [...prevState, ...arr]);
     }
   };
 
-  useEffect(() => {
-    const arr: string[] = [];
-    if (uploadFiles) {
-      for (let i = 0; i < uploadFiles.length; i++) {
-        arr.push(URL.createObjectURL(uploadFiles[i]));
-      }
-    }
-    setImages((prevState) => {
-      return [...prevState, ...arr];
-    });
-  }, [uploadFiles]);
-
   return (
     <Row>
-      <Col md={3}>
+      <Col xs={3}>
         <Form.Group controlId="formFile" className="mb-3 form-upload">
           <Form.Label className="fw-semibold">Загрузить изображения</Form.Label>
           <label className="form-upload__custom">
@@ -49,7 +38,7 @@ export const ImageUploadForm = () => {
           </label>
         </Form.Group>
       </Col>
-      <Col className="form-upload__thumbnails mt-4">
+      <Col className="form-upload__thumbnails mt-5">
         {images?.map((image) => (
           <Image key={image} thumbnail src={image} />
         ))}
