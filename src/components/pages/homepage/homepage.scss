@@ -3,9 +3,10 @@
 .homepage {
   margin-top: toRem(100);
   &__container {
-
     display: flex;
     flex-direction: column;
+    justify-content: center;
     row-gap: toRem(20);
+
   }
 }

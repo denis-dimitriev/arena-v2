@@ -23,10 +23,10 @@ export const Header = () => {
           <SearchForm />
         </div>
         <div className="header__user-box col d-flex justify-content-end align-items-center">
-          <Link to="#" className="header__link">
+          <Link to="/home/watched" className="header__link">
             <WatchedIcon />
           </Link>
-          <Link to="#" className="header__link">
+          <Link to="/home/liked" className="header__link">
             <FavoriteIcon />
           </Link>
 

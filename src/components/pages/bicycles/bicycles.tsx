@@ -1,11 +1,11 @@
-import React from 'react';
+import { Fragment } from 'react';
 
 const Bicycles = () => {
-    return (
-        <div>
-            <h1>Bicycles</h1>
-        </div>
-    );
+  return (
+    <Fragment>
+      <h1>Bicycles</h1>
+    </Fragment>
+  );
 };
 
 export default Bicycles;

@@ -16,7 +16,7 @@ export interface IAdvertisement {
   offer: 'Продам' | 'Куплю';
   images: string[];
   price: number | 'договорная';
-  currency: CurrencyType;
+  currency?: CurrencyType;
   contact: string;
   state: 'off' | 'visible' | 'hidden';
   isFavorite: boolean;

@@ -8,7 +8,7 @@ export const MainCategory = () => {
     <div className="main-category container">
       <ul className="nav nav-pills nav-justified">
         <li className="nav-item">
-          <Link to="home/bicycles" className="nav-link text-black">
+          <Link to="/home/bicycles" className="nav-link text-black">
             <BicycleIcon />
             Велосипеды
           </Link>

@@ -1,18 +1,24 @@
 @import "src/styles/styles";
 
 .card-item {
-  min-width: toEm(285);
-  max-width: toEm(320)!important;
-  padding: toRem(10)!important;
-  border: none!important;
+  min-width: toRem(235) !important;
+  max-width: toRem(280) !important;
+  padding: toRem(0) !important;
+  border: none !important;
   background-color: $white;
+  transition: all 100ms ease-in-out;
 
 
-  @media screen and (max-width: $tablet){
-    width: 45%;
+  @media screen and (max-width: $tablet) {
+    width: 40% !important;
   }
 
-  @media (max-width: $small-phone){
-    min-width: toEm(420);
+  @media (max-width: $small-phone) {
+    min-width: toRem(300) !important;
+  }
+
+  &:hover {
+    opacity: 0.8;
+    box-shadow: inset 0 1px 1px 1px rgba(0, 0, 0, 0.4);
   }
 }
