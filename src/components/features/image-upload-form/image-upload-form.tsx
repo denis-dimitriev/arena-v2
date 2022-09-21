@@ -12,13 +12,12 @@ export const ImageUploadForm = () => {
     event.preventDefault();
     const { files } = event.target;
     const arrOfUploadImages: string[] = [];
+    const set = new Set(files);
     if (files) {
-      const set = new Set(files);
       set.forEach((value) => {
         arrOfUploadImages.push(URL.createObjectURL(value));
-        set.delete(value);
       });
-      setImages((prevState) => [...prevState, ...arrOfUploadImages.slice(0, 7)]);
+      setImages((prevState) => [...prevState, ...arrOfUploadImages.slice(0, 8)]);
     }
   };
 

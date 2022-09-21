@@ -4,6 +4,7 @@
   align-items: center;
 
   &__custom {
+    width: toRem(100);
     display: flex;
     align-items: flex-start;
     cursor: pointer;

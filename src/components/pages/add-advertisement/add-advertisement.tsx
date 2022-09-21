@@ -17,7 +17,7 @@ const AddAdvertisement = () => {
   const onSelectCategoryHandler = (event: ChangeEvent<HTMLSelectElement>) =>
     setCategory(event.target.value);
 
-  const onNegotiableChooseHandler = (event: ChangeEvent<HTMLInputElement>) =>
+  const onSetNegotiableHandler = (event: ChangeEvent<HTMLInputElement>) =>
     setNegotiable(event.target.checked);
 
   return (
@@ -36,7 +36,7 @@ const AddAdvertisement = () => {
             <Form.Group className="mb-3">
               <Form.Label className="fw-semibold">Тип предложения</Form.Label>
               <span className="d-flex gap-3">
-                <Form.Check type="radio" name="offer" value="Продам" label="Продам" checked />
+                <Form.Check type="radio" name="offer" value="Продам" label="Продам" />
                 <Form.Check type="radio" name="offer" value="Куплю" label="Куплю" />
               </span>
             </Form.Group>
@@ -63,7 +63,7 @@ const AddAdvertisement = () => {
                 type="switch"
                 value="Договорная"
                 label="Договорная"
-                onChange={onNegotiableChooseHandler}
+                onChange={onSetNegotiableHandler}
               />
             </Form.Group>
           </Col>
