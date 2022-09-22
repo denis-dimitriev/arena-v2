@@ -6,6 +6,7 @@ import { BicycleIcon, EBicycleIcon, EScooterIcon, Parts_AccessoriesIcon } from '
 export const MainCategory = () => {
   return (
     <div className="main-category container">
+      <h4 className="fw-bold text-center">Категории</h4>
       <ul className="nav nav-pills nav-justified">
         <li className="nav-item">
           <Link to="/home/bicycles" className="nav-link text-black">

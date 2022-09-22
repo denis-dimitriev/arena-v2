@@ -11,8 +11,8 @@ import AddAdvertisement from './pages/add-advertisement/add-advertisement';
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Homepage />} />
+      <Route element={<Layout />}>
+        <Route path="/*" element={<Homepage />} />
         <Route path="home/*" element={<Homepage />} />
         <Route element={<PrivateRoutes />}>
           <Route path="user-cabinet" element={<UserCabinet />} />
