@@ -1,4 +1,5 @@
 import './product-item-images.scss';
+
 import { Button, Image } from 'react-bootstrap';
 import { ArrowLeftIcon, ArrowRightIcon } from '../../../assets';
 import { useState } from 'react';
@@ -15,31 +16,47 @@ const images = [
 ];
 
 export const ProductItemImages = () => {
+  const [adsImages, setAdsImages] = useState<string[]>(images);
+  const [pos, setPos] = useState<number>(0);
 
-  const [images] = useState()
+  const itemWidth = 310;
+  const totalItems = adsImages.length;
+  const sliderWidth = totalItems * itemWidth;
+
+  const moveRightHandler = () => {
+    setPos((prev) => {
+      return prev - itemWidth;
+    });
+  };
+
+  const moveLeftHandler = () => {
+    setPos((prev) => {
+      return prev + itemWidth;
+    });
+  };
 
   return (
     <div className="product-item-images">
       <div className="slider">
-        <ul className="slider__list">
-          {images.map((image) => (
+        <ul className="slider__list" style={{ transform: `translateX(${pos}px)` }}>
+          {adsImages.map((image) => (
             <li key={image} className="slider__list-item">
               <Image src={image} />
             </li>
           ))}
         </ul>
         <div className="slider__actions">
-          <Button variant="light">
+          <Button variant="light" onClick={moveLeftHandler}>
             <ArrowLeftIcon />
           </Button>
-          <Button variant="light">
+          <Button variant="light" onClick={moveRightHandler}>
             <ArrowRightIcon />
           </Button>
         </div>
       </div>
       <div className="images">
         <ul className="images__list">
-          {images.map((image) => (
+          {adsImages.map((image) => (
             <li key={image} className="images__list-item">
               <Image src={image} width={75} />
             </li>
