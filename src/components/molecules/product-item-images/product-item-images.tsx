@@ -1,8 +1,8 @@
 import './product-item-images.scss';
 
-import { Button, Image } from 'react-bootstrap';
-import { ArrowLeftIcon, ArrowRightIcon } from '../../../assets';
-import { useState } from 'react';
+import {Button, Image} from 'react-bootstrap';
+import {ArrowLeftIcon, ArrowRightIcon} from '../../../assets';
+import {useState} from 'react';
 
 const images = [
   'https://i.simpalsmedia.com/999.md/BoardImages/320x240/c47b6f06030b6061eaa077e2059e583b.jpg',
@@ -16,52 +16,64 @@ const images = [
 ];
 
 export const ProductItemImages = () => {
-  const [adsImages, setAdsImages] = useState<string[]>(images);
   const [pos, setPos] = useState<number>(0);
 
-  const itemWidth = 310;
-  const totalItems = adsImages.length;
-  const sliderWidth = totalItems * itemWidth;
+  const limitPosition = (images.length - 1) * 100;
 
   const moveRightHandler = () => {
     setPos((prev) => {
-      return prev - itemWidth;
+      if (prev === -limitPosition) {
+        return 0
+      }
+      return prev - 100;
     });
   };
 
   const moveLeftHandler = () => {
     setPos((prev) => {
-      return prev + itemWidth;
+      if (prev === 0) {
+        return -limitPosition
+      }
+      return prev + 100;
     });
   };
 
+  const onThumbnailClickHandler = (target: string) => {
+    images.forEach((value, index) => {
+      if (value === target) {
+        console.log(index * 100)
+        setPos(-(index * 100))
+      }
+    })
+  }
+
   return (
-    <div className="product-item-images">
-      <div className="slider">
-        <ul className="slider__list" style={{ transform: `translateX(${pos}px)` }}>
-          {adsImages.map((image) => (
-            <li key={image} className="slider__list-item">
-              <Image src={image} />
-            </li>
-          ))}
-        </ul>
-        <div className="slider__actions">
-          <Button variant="light" onClick={moveLeftHandler}>
-            <ArrowLeftIcon />
-          </Button>
-          <Button variant="light" onClick={moveRightHandler}>
-            <ArrowRightIcon />
-          </Button>
+      <div className="product-item-images">
+        <div className="slider">
+          <ul className="slider__list">
+            {images.map((image) => (
+                <li key={image} className="slider__list-item" style={{transform: `translateX(${pos}%)`}}>
+                  <Image src={image}/>
+                </li>
+            ))}
+          </ul>
+          <div className="slider__actions">
+            <Button variant="light" onClick={moveLeftHandler}>
+              <ArrowLeftIcon/>
+            </Button>
+            <Button variant="light" onClick={moveRightHandler}>
+              <ArrowRightIcon/>
+            </Button>
+          </div>
         </div>
-      </div>
-      <div className="images">
-        <ul className="images__list">
-          {adsImages.map((image) => (
-            <li key={image} className="images__list-item">
-              <Image src={image} width={75} />
-            </li>
-          ))}
-        </ul>
+        <div className="images">
+          <ul className="images__list">
+            {images.map((image) => (
+                <li key={image} className="images__list-item" onClick={() => onThumbnailClickHandler(image)}>
+                  <Image src={image} width={75}/>
+                </li>
+            ))}
+          </ul>
       </div>
     </div>
   );
