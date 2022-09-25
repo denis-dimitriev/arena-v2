@@ -33,7 +33,7 @@ export const Header = () => {
           {currentUser.user ? (
             <UserDropdownMenu />
           ) : (
-            <Link className="btn btn-outline-secondary btn-close-white" to="authentication">
+            <Link className="btn btn-dark border-light" to="authentication">
               Войти
             </Link>
           )}

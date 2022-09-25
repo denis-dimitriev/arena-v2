@@ -5,7 +5,7 @@ import {
   IEBicycleAdvertisement,
   IEScootersAdvertisement
 } from '../../../types/advertisement';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface ProductListProps {
   products:

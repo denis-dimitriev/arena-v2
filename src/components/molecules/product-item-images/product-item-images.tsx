@@ -1,8 +1,8 @@
 import './product-item-images.scss';
 
-import {Button, Image} from 'react-bootstrap';
-import {ArrowLeftIcon, ArrowRightIcon} from '../../../assets';
-import {useState} from 'react';
+import { Button, Image } from 'react-bootstrap';
+import { ArrowLeftIcon, ArrowRightIcon } from '../../../assets';
+import { useState } from 'react';
 
 const images = [
   'https://i.simpalsmedia.com/999.md/BoardImages/320x240/c47b6f06030b6061eaa077e2059e583b.jpg',
@@ -41,7 +41,6 @@ export const ProductItemImages = () => {
   const onThumbnailClickHandler = (target: string) => {
     images.forEach((value, index) => {
       if (value === target) {
-        console.log(index * 100)
         setPos(-(index * 100))
       }
     })
