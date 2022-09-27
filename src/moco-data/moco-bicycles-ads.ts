@@ -192,5 +192,42 @@ export const bicycleAds: IBicycleAdvertisement[] = [
     bicycleType: 'Детский',
     frameMaterial: 'Другой',
     condition: 'Б/у'
+  },
+  {
+    id: 6,
+    authorId: 5,
+    category: 'Велосипеды',
+    title: 'New Serious 27,5',
+    description:
+      'Абсолютно новый велосипед Serious! 19 рама (на рост 172-180см. ) ' +
+      'Колёса 27,5. Тормоза клещевые механические. Вилка пружино - эластомерная.Регион Тирасполь. ' +
+      'Звонить с Orange +0037377809999 , c Moldcell +037377809999или пишите на Viber +37377809999.',
+    region: 'Тирасполь мун',
+    createdAt: new Date(456465465465),
+    updatedAt: new Date(4654564564546),
+    offer: 'Продам',
+    images: [
+      'https://i.simpalsmedia.com/999.md/BoardImages/900x900/afeedc947bad890fbc2a2b13ecc1eacf.jpg',
+      'https://i.simpalsmedia.com/999.md/BoardImages/900x900/e5ab816acf0e963b7552be3aa0f34556.jpg',
+      'https://i.simpalsmedia.com/999.md/BoardImages/900x900/ca288fc276213e44a70dcaa62e0f597e.jpg',
+      'https://i.simpalsmedia.com/999.md/BoardImages/900x900/26b2a7cd7d0f99427232bb34e2aaf38b.jpg',
+      'https://i.simpalsmedia.com/999.md/BoardImages/900x900/4865fe0cd9ab982d02505754acb979aa.jpg',
+      'https://i.simpalsmedia.com/999.md/BoardImages/900x900/1989dbd8c95dadc66c91b5a0c764d48d.jpg',
+      'https://i.simpalsmedia.com/999.md/BoardImages/900x900/2237961f445235c843d242fc462292c7.jpg'
+    ],
+    price: 375,
+    currency: 'usd',
+    contact: '373 61 019863',
+    state: 'visible',
+    isFavorite: false,
+    brand: 'Другое',
+    bicycleType: 'Горный',
+    frameMaterial: 'Алюминий',
+    frameSize: '19',
+    wheelSize: '27.5',
+    brakes: 'Ободной',
+    components: 'Shimano',
+    color: 'Салатовый',
+    condition: 'Б/у'
   }
 ];

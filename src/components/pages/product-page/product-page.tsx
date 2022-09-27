@@ -8,7 +8,8 @@ const ProductPage = () => {
   const { pathname } = useLocation();
   console.log(id);
   console.log(pathname.includes('bicycles'));
-  // Todo сделать enum где ключ русские слова по категориям и вытащить из пути категорию и взять нужный элемент
+  // Todo сделать enum где ключ русские слова по
+  //  категориям и вытащить из пути категорию и взять нужный элемент
 
   return (
     <div className="d-flex flex-column mt-5 gap-5">
