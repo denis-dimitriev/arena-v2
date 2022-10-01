@@ -23,10 +23,14 @@
 
     &__list-item {
       min-width: 100%;
+      min-height: 100%;
       transition: transform 0.3s linear;
 
       img {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
       }
     }
 
@@ -66,7 +70,14 @@
       padding: 0;
     }
     &__list-item {
+      width: toRem(75);
+      height: toRem(75);
       cursor: pointer;
+
+      & img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

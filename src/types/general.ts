@@ -1,3 +1,10 @@
+import {
+  IAccessoriesAdvertisement,
+  IBicycleAdvertisement,
+  IEBicycleAdvertisement,
+  IEScootersAdvertisement
+} from './advertisement';
+
 export type Region =
   | 'Кишинёв мун.'
   | 'Бельцы мун.'
@@ -34,12 +41,12 @@ export type ColorsTypes =
   | 'Другое';
 
 export type CategoryType = 'Велосипеды' | 'Электровелосипеды' | 'Электросамокаты' | 'Аксессуары';
-export enum CategoryEnum {
-  BICYCLES = 'Велосипеды',
-  ELECTRIC_BICYCLES = 'Электровелосипеды',
-  ELECTRIC_SCOOTERS = 'Электросамокаты',
-  ACCESSORIES = 'Аксессуары'
-}
+
+export type ProductType =
+  | IBicycleAdvertisement
+  | IEBicycleAdvertisement
+  | IEScootersAdvertisement
+  | IAccessoriesAdvertisement;
 
 export type ConditionType = 'На запчасти' | 'Б/у' | 'Новый';
 

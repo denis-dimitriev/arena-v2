@@ -195,7 +195,7 @@ export const bicycleAds: IBicycleAdvertisement[] = [
   },
   {
     id: 6,
-    authorId: 5,
+    authorId: 6,
     category: 'Велосипеды',
     title: 'New Serious 27,5',
     description:

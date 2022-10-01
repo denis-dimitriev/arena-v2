@@ -3,20 +3,11 @@ import './card-item.scss';
 import { FavoriteIcon, FavoriteRedIcon } from '../../../assets';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import {
-  IAccessoriesAdvertisement,
-  IBicycleAdvertisement,
-  IEBicycleAdvertisement,
-  IEScootersAdvertisement
-} from '../../../types/advertisement';
 import { useState } from 'react';
+import { ProductType } from '../../../types/general';
 
 interface CardProps {
-  product:
-    | IBicycleAdvertisement
-    | IEBicycleAdvertisement
-    | IEScootersAdvertisement
-    | IAccessoriesAdvertisement;
+  product: ProductType;
 }
 
 const categoriesPath = {
@@ -33,7 +24,7 @@ export const CardItem = ({ product }: CardProps) => {
 
   const thumbnail = images[0];
 
-  const onLikedClickHandler = () => {
+  const onFavoriteClickHandler = () => {
     setProductCard((prev) => {
       return {
         ...prev,
@@ -56,7 +47,7 @@ export const CardItem = ({ product }: CardProps) => {
           <p className="card-text m-0 text-danger">
             {price}&nbsp;{currency}
           </p>
-          <button className="btn border-white p-0" onClick={onLikedClickHandler}>
+          <button className="btn border-white p-0" onClick={onFavoriteClickHandler}>
             {isFavorite ? <FavoriteRedIcon /> : <FavoriteIcon />}
           </button>
         </span>
