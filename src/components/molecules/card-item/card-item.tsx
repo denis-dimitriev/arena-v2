@@ -1,34 +1,63 @@
 import './card-item.scss';
 
-import { FavoriteIcon } from '../../../assets';
+import { FavoriteIcon, FavoriteRedIcon } from '../../../assets';
 import { Card } from 'react-bootstrap';
-import { CurrencyType } from '../../../types/general';
+import { Link } from 'react-router-dom';
+import {
+  IAccessoriesAdvertisement,
+  IBicycleAdvertisement,
+  IEBicycleAdvertisement,
+  IEScootersAdvertisement
+} from '../../../types/advertisement';
+import { useState } from 'react';
 
 interface CardProps {
-  title: string;
-  price: number | 'договорная';
-  currency?: CurrencyType;
-  createdAt: Date;
-  images: string[];
+  product:
+    | IBicycleAdvertisement
+    | IEBicycleAdvertisement
+    | IEScootersAdvertisement
+    | IAccessoriesAdvertisement;
 }
 
-export const CardItem = ({ title, createdAt, currency, price, images }: CardProps) => {
+const categoriesPath = {
+  Велосипеды: 'bicycles',
+  Электровелосипеды: 'electric-bicycles',
+  Электросамокаты: 'electric-scooters',
+  Аксессуары: 'parts-and-accessories'
+};
+
+export const CardItem = ({ product }: CardProps) => {
+  const [productCard, setProductCard] = useState(product);
+
+  const { id, title, category, createdAt, currency, price, images, isFavorite } = productCard;
+
   const thumbnail = images[0];
+
+  const onLikedClickHandler = () => {
+    setProductCard((prev) => {
+      return {
+        ...prev,
+        isFavorite: !isFavorite
+      };
+    });
+  };
 
   return (
     <Card className="card-item">
-      <Card.Img variant="top" src={thumbnail} />
-      <Card.Body>
-        <small className="fw-normal">{title}</small>
-      </Card.Body>
+      <Link to={`/home/${categoriesPath[category]}/${id}`}>
+        <Card.Img variant="top" src={thumbnail} height={180} />
+        <Card.Body>
+          <p className="fw-normal">{title}</p>
+        </Card.Body>
+      </Link>
       <Card.Footer className="bg-white border-0">
-        <small className="text-muted">{`${createdAt}`}</small>
+        <small className="text-muted">Создано: {`${createdAt}`}</small>
         <span className="d-flex align-items-center justify-content-between">
           <p className="card-text m-0 text-danger">
             {price}&nbsp;{currency}
           </p>
-          <button className="btn border-white p-0">
-            <FavoriteIcon />
+          <button className="btn border-white p-0" onClick={onLikedClickHandler}>
+            {isFavorite ? <FavoriteRedIcon /> : <FavoriteIcon />}
           </button>
         </span>
       </Card.Footer>

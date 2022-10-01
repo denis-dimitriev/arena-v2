@@ -24,7 +24,7 @@ export type AccessoriesTypes =
   | 'Другое';
 
 export interface IAccessories {
-  parts: PartsTypes;
-  accessoriesType: AccessoriesTypes;
+  parts?: PartsTypes;
+  accessoriesType?: AccessoriesTypes;
   condition: ConditionType;
 }

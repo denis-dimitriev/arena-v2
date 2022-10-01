@@ -1,4 +1,4 @@
-import { ColorsTypes, IMotor } from './general';
+import { ColorsTypes, ConditionType, IMotor } from './general';
 
 export type EScooterBrands =
   | 'Xiaomi'
@@ -15,6 +15,7 @@ export type EScooterBrands =
 
 export interface IEScooter extends IMotor {
   brand: EScooterBrands;
-  weight: string;
-  color: ColorsTypes;
+  condition: ConditionType;
+  weight?: string;
+  color?: ColorsTypes;
 }
