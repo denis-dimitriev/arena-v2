@@ -37,7 +37,28 @@ export const ProductFilters = ({ category }: ProductFiltersProps) => {
     setNegotiable(checked);
   };
 
-  const categoryFilter = function () {
+  const onMinPriceFilterHandler = () => {};
+  const onMaxPriceFilterHandler = () => {};
+  const onNewDateFilterHandler = () => {};
+  const onOldDateFilterHandler = () => {};
+  const onLocationFilterHandler = () => {};
+  const onPriceFilterHandler = () => {};
+  const onOfferTypeFilterHandler = () => {};
+  const onConditionFilterHandler = () => {};
+  const onOptionFilterHandler = () => {};
+  const onBicycleTypeFilterHandler = () => {};
+  const onBrandFilterHandler = () => {};
+  const onFrameSizeFilterHandler = () => {};
+  const onWheelSizeFilterHandler = () => {};
+  const onMaterialFilterHandler = () => {};
+  const onComponentsFilterHandler = () => {};
+  const onBrakesTypeFilterHandler = () => {};
+  const onSuspensionTypeFilterHandler = () => {};
+  const onColorFilterHandler = () => {};
+  const onPartsTypeFilterHandler = () => {};
+  const onAccessoriesTypeFilterHandler = () => {};
+
+  const categoryAccordionItems = function () {
     switch (category) {
       case 'Велосипеды':
       case 'Электровелосипеды':
@@ -144,7 +165,7 @@ export const ProductFilters = ({ category }: ProductFiltersProps) => {
                 ))}
               </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item eventKey="14">
+            <Accordion.Item eventKey="6">
               <Accordion.Header>Цвет</Accordion.Header>
               <Accordion.Body>
                 {colors.map((color) => (
@@ -165,7 +186,7 @@ export const ProductFilters = ({ category }: ProductFiltersProps) => {
                 ))}
               </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item eventKey="14">
+            <Accordion.Item eventKey="6">
               <Accordion.Header>Тип акксесссуаров</Accordion.Header>
               <Accordion.Body>
                 {accessories.map((acc) => (
@@ -223,7 +244,7 @@ export const ProductFilters = ({ category }: ProductFiltersProps) => {
             ))}
           </Accordion.Body>
         </Accordion.Item>
-        {categoryFilter()}
+        {categoryAccordionItems()}
       </Accordion>
     </Col>
   );
