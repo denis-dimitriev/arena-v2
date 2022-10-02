@@ -1,14 +1,14 @@
 import './add-advertisement.scss';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { CustomSelect } from '../../molecules/custom-select/custom-select';
+import { CustomSelect } from '../../ui/custom-select/custom-select';
 import { Categories } from '../../../models/category';
-import { Regions } from '../../../models/region';
+import { regions } from '../../../models/region';
 import { Currencies } from '../../../models/currency';
 import { AddSpecifications } from '../../features/add-specifications/add-specifications';
 import { CategoryType } from '../../../types/general';
 import { ChangeEvent, useState } from 'react';
 import { ImageUploadForm } from '../../features/image-upload-form/image-upload-form';
-import { CustomInputText } from '../../molecules/custom-input-text/custom-input-text';
+import { CustomInputText } from '../../ui/atoms/custom-input-text/custom-input-text';
 
 const AddAdvertisement = () => {
   const [category, setCategory] = useState<CategoryType | null | string>(null);
@@ -49,7 +49,7 @@ const AddAdvertisement = () => {
         </Form.Group>
         <Row>
           <Col xs={2}>
-            <CustomSelect label={'Регион'} options={Regions} />
+            <CustomSelect label={'Регион'} options={regions} />
           </Col>
           <Col xs={2}>
             <CustomInputText label={'Цена'} placeholder="0.00" disabled={negotiable} />

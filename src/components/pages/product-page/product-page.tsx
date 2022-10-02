@@ -56,7 +56,7 @@ const ProductPage = () => {
 
   return (
     <div className="d-flex flex-column mt-5 gap-5">
-      <h3 className="fw-bold text-start d-flex align-items-center">
+      <h3 className="fw-normal fs-4 text-start d-flex align-items-center">
         {product.title}
         <button className="mx-3 btn border-white p-0 " onClick={onFavoriteClickHandler}>
           {product.isFavorite ? <FavoriteRedIcon /> : <FavoriteIcon />}
@@ -70,6 +70,7 @@ const ProductPage = () => {
           <h1>Author info</h1>
         </Col>
       </Row>
+      <Col></Col>
     </div>
   );
 };

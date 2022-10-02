@@ -1,10 +1,10 @@
 import Accordion from 'react-bootstrap/Accordion';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { UserGeneralData } from '../../molecules/user-general-data/user-general-data';
 import { UserPersonalData } from '../../molecules/user-personal-data/user-personal-data';
 import { UserChangePassword } from '../../molecules/user-change-password/user-change-password';
 
-const AccordionPanel = () => {
+const UserPanel = () => {
   return (
     <Accordion defaultActiveKey={['0']} alwaysOpen>
       <Accordion.Item eventKey="0">
@@ -71,4 +71,4 @@ const AccordionPanel = () => {
   );
 };
 
-export default AccordionPanel;
+export default UserPanel;

@@ -1,6 +1,6 @@
 import { CategoryType } from '../../../types/general';
 import { Col, Row } from 'react-bootstrap';
-import { CustomSelect } from '../../molecules/custom-select/custom-select';
+import { CustomSelect } from '../../ui/custom-select/custom-select';
 import {
   bicycleBrands,
   bicycleTypes,
@@ -16,7 +16,7 @@ import { colors, conditions } from '../../../models/general';
 import { eBicycleBrands } from '../../../models/e-bicycle-specs';
 import { eScooterBrands } from '../../../models/e-scooter-specs';
 import { accessories, parts } from '../../../models/accessories';
-import { CustomInputText } from '../../molecules/custom-input-text/custom-input-text';
+import { CustomInputText } from '../../ui/atoms/custom-input-text/custom-input-text';
 
 interface AddSpecificationsProps {
   category: CategoryType | string | null;

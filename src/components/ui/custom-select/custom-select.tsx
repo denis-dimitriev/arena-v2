@@ -1,5 +1,5 @@
 import { Form } from 'react-bootstrap';
-import { ChangeEvent, FormEvent, HTMLProps } from 'react';
+import { HTMLProps } from 'react';
 
 interface CustomSelectProps extends HTMLProps<HTMLSelectElement> {
   label?: string;

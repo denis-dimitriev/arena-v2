@@ -1,6 +1,6 @@
 import { Region } from '../types/general';
 
-export const Regions: Region[] = [
+export const regions: Region[] = [
   'Кишинёв мун.',
   'Бельцы мун.',
   'Тирасполь мун',
