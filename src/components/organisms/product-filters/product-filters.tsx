@@ -16,6 +16,8 @@ import {
 import { ChangeEvent, Fragment, useCallback, useState } from 'react';
 import { colors, conditions } from '../../../models/general';
 import { eBicycleBrands } from '../../../models/e-bicycle-specs';
+import { eScooterBrands } from '../../../models/e-scooter-specs';
+import { accessories, parts } from '../../../models/accessories';
 
 interface ProductFiltersProps {
   category?: CategoryType | null;
@@ -132,9 +134,47 @@ export const ProductFilters = ({ category }: ProductFiltersProps) => {
           </Fragment>
         );
       case 'Электросамокаты':
-        return;
+        return (
+          <Fragment>
+            <Accordion.Item eventKey="5">
+              <Accordion.Header>Бренд</Accordion.Header>
+              <Accordion.Body>
+                {eScooterBrands.map((brand) => (
+                  <Checkbox key={brand} label={brand} />
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="14">
+              <Accordion.Header>Цвет</Accordion.Header>
+              <Accordion.Body>
+                {colors.map((color) => (
+                  <Checkbox key={color} label={color} />
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Fragment>
+        );
       case 'Аксессуары':
-        return;
+        return (
+          <Fragment>
+            <Accordion.Item eventKey="5">
+              <Accordion.Header>Тип запчастнй</Accordion.Header>
+              <Accordion.Body>
+                {parts.map((part) => (
+                  <Checkbox key={part} label={part} />
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="14">
+              <Accordion.Header>Тип акксесссуаров</Accordion.Header>
+              <Accordion.Body>
+                {accessories.map((acc) => (
+                  <Checkbox key={acc} label={acc} />
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Fragment>
+        );
       default:
         return <></>;
     }

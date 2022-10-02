@@ -23,7 +23,7 @@ export const MainCategory = () => {
         <li className="nav-item">
           <Link to="/home/electric-scooters" className="nav-link text-black">
             <EScooterIcon />
-            Электроскутеры
+            Электросамокаты
           </Link>
         </li>
         <li className="nav-item">
